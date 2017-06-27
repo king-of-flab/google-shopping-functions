@@ -1,18 +1,17 @@
 var data = require('../products.json');
 
-/*
- * example function called getItemsCount
- * input: accepts full item data
- * output: returns the length of the items array
- */
-function getItemsCount(itemData) {
-  return itemData.items.length;
+function getItems (input) {
+  return input.items
 }
-
-/*
- * Define and use your functions here
- */
-
-// output item count using the getItemsCount function
-console.log('Item Count: ' + getItemsCount(data));
-
+var filteredBrand = []
+function getItemsByBrand (input, brandName) {
+  for (var i = 0; i < input.length; i++) {
+    if (input[i].product.brand === brandName) {
+      filteredBrand.push(input[i])
+      // console.log(data.items[i])
+    }
+  }
+  return filteredBrand
+}
+console.log(getItemsByBrand(getItems(data), 'Nikon'))
+// getItemsByBrand(getItems(data), 'Canon')
